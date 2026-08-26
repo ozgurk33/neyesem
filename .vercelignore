@@ -1,0 +1,6 @@
+# Yayina gitmesine gerek olmayan gelistirme dosyalari
+serve.py
+.claude/
+
+# Tasarim kaynaklari (siteye kopyalari assets/ kokunde duruyor)
+assets/Tasarim/
