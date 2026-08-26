@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "ne-yesem-site",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["serve.py"],
+      "port": 5173
+    },
+    {
+      "name": "ne-yesem-yayin",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "5199", "--directory", "C:/Users/Ozgur/Desktop/neyesem-yayin"],
+      "port": 5199
+    }
+  ]
+}

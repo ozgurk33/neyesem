@@ -1,0 +1,12 @@
+# Isletim sistemi
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Gelistirme araclari
+__pycache__/
+*.pyc
+
+# Editor
+.vscode/
+.idea/

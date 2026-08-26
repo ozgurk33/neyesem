@@ -1,0 +1,799 @@
+/* =========================================================
+   Ne Yesem? — custom styles (Tailwind CDN utility-first, bu
+   dosya sadece Tailwind'in kolayca ifade edemediği şeyler için)
+   ========================================================= */
+
+:root {
+  /* Ust bar yuksekligi — hero ve sticky filtre bunu referans alir */
+  --nav-h: 88px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: #E8622C;
+  color: #FBF4E9;
+}
+
+/* ---------------------------------------------------------
+   Ortak genislik — icerik ekran kenarlarina daha yakin dursun
+--------------------------------------------------------- */
+.site-container {
+  width: 100%;
+  max-width: 1760px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 4rem);
+}
+
+/* ---------------------------------------------------------
+   Ust bar — yari saydam "buzlu cam": hero gorseli arkasindan
+   gorunur ama blur + koyu tul sayesinde yazilar net okunur.
+--------------------------------------------------------- */
+#top-nav {
+  min-height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  background: rgba(26, 18, 13, 0.16);
+  backdrop-filter: blur(10px) saturate(1.2);
+  -webkit-backdrop-filter: blur(10px) saturate(1.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Hero'yu gectikten sonra: krem, tamamen opak */
+#top-nav.scrolled {
+  background: rgba(251, 244, 233, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom-color: rgba(58, 42, 32, 0.1);
+  box-shadow: 0 8px 30px -14px rgba(58, 42, 32, 0.35);
+}
+
+.nav-links a {
+  color: #fff;
+  white-space: nowrap;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+  transition: color 0.25s ease;
+}
+
+.nav-links a:hover {
+  color: #F0A93B;
+}
+
+/* Dar ekranda kisa etiket kullanilir */
+.nav-short { display: none; }
+
+#top-nav.scrolled .nav-links a {
+  color: #4A382C;
+  text-shadow: none;
+}
+
+#top-nav.scrolled .nav-links a:hover {
+  color: #E8622C;
+}
+
+/* ---------------------------------------------------------
+   Marka logosu — "NE" koyu, "YE?EM" turuncu
+--------------------------------------------------------- */
+.nav-logo-img,
+.footer-logo-img {
+  display: block;
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: contain;
+  /* logo orani 310 x 120 */
+  aspect-ratio: 310 / 120;
+}
+
+.nav-logo-img {
+  height: 48px;
+  background-image: url('assets/logo-light.png?v=3');
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+  transition: filter 0.3s ease;
+}
+
+#top-nav.scrolled .nav-logo-img {
+  background-image: url('assets/logo-dark.png?v=3');
+  filter: none;
+}
+
+.footer-logo-img {
+  height: 42px;
+  background-image: url('assets/logo-light.png?v=3');
+}
+
+/* ---------------------------------------------------------
+   Bolum ustu kucuk etiket — sade, cizgisiz
+--------------------------------------------------------- */
+.eyebrow {
+  display: block;
+}
+
+/* Krem zeminde: markanin yuvarlak fontu + sicak karamel ton.
+   Turuncuyla ayni aileden ama daha sakin, gozu yormuyor. */
+.eyebrow-muted {
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #A96A3C;
+  letter-spacing: 0.005em;
+}
+
+/* Hero uzerinde: koyu gorsel uzerinde yumusak, sicak krem */
+.eyebrow-light {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  color: #F0E1C8;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+}
+
+/* ---------------------------------------------------------
+   HERO — starts calm, "wakes up" on hover
+--------------------------------------------------------- */
+.hero {
+  /* Gorsel en ustten baslar, bar onun uzerinde saydam durur */
+  height: 100vh;
+  min-height: 560px;
+  background-color: #1c140f;
+  cursor: pointer;
+}
+
+
+/* Orijinal tavuk durum fotografi, tum ekrani kaplar. */
+.hero-bg {
+  background-image: url('assets/hero-bg.jpg?v=9');
+  background-size: cover;
+  background-position: center;
+  transform: scale(1);
+  filter: saturate(1.05) brightness(0.98);
+  transition: transform 1.1s cubic-bezier(0.19, 1, 0.22, 1), filter 1.1s ease;
+}
+
+
+.hero-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(20, 14, 10, 0.25) 0%,
+    rgba(20, 14, 10, 0.2) 45%,
+    rgba(20, 14, 10, 0.65) 100%
+  );
+  opacity: 0.6;
+  transition: opacity 0.9s ease, background 0.9s ease;
+}
+
+.hero-content {
+  width: 100%;
+  max-width: 1500px;
+  /* ust bar saydam oldugu icin metni onun altinda kalan alanda ortala */
+  padding: var(--nav-h) 2rem 0;
+}
+
+.hero-text-panel {
+  display: block;
+  width: 100%;
+  padding: clamp(2rem, 4vh, 3.5rem) clamp(2rem, 5vw, 4.5rem);
+  border-radius: 2rem;
+  background: rgba(20, 14, 10, 0);
+  transition: background 0.8s ease, backdrop-filter 0.8s ease;
+}
+
+.hero:hover .hero-text-panel,
+.hero:focus-within .hero-text-panel {
+  background: rgba(20, 14, 10, 0.42);
+  backdrop-filter: blur(8px);
+}
+
+/* Tam ekranda da tasmadan olceklensin diye viewport-tabanli tipografi */
+.hero-eyebrow {
+  font-size: clamp(1rem, 1.25vw, 1.35rem);
+}
+
+.hero-title {
+  font-size: clamp(2rem, 3.9vw, 4.25rem);
+  line-height: 1.12;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.hero-accent {
+  color: #E8622C;
+}
+
+.hero-cta {
+  margin-top: clamp(1.5rem, 3vh, 2.5rem);
+}
+
+.hero-cta a {
+  font-size: clamp(1rem, 1.15vw, 1.2rem);
+}
+
+.hero-eyebrow,
+.hero-title,
+.hero-cta {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.hero-title { transition-delay: 0.05s; }
+.hero-cta   { transition-delay: 0.15s; }
+
+.hero-scroll-hint {
+  opacity: 0.8;
+  transition: opacity 0.5s ease;
+}
+
+/* Hover / focus (keyboard) state: darken + reveal content */
+.hero:hover .hero-bg,
+.hero:focus-within .hero-bg {
+  transform: scale(1.02);
+  filter: saturate(1.12) contrast(1.1) brightness(0.8);
+}
+
+.hero:hover .hero-overlay,
+.hero:focus-within .hero-overlay {
+  opacity: 1;
+}
+
+.hero:hover .hero-eyebrow,
+.hero:hover .hero-title,
+.hero:hover .hero-cta,
+.hero:focus-within .hero-eyebrow,
+.hero:focus-within .hero-title,
+.hero:focus-within .hero-cta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero:hover .hero-scroll-hint {
+  opacity: 0;
+}
+
+/* Touch devices can't hover — keep the message legible by default */
+@media (hover: none) {
+  .hero-overlay { opacity: 0.85; }
+  .hero-eyebrow, .hero-title, .hero-cta {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .hero-bg { transform: scale(1.0); filter: saturate(1.1) brightness(0.82); }
+}
+
+/* ---------------------------------------------------------
+   Mascot — sicak beyaz zemin (gorselin beyazlariyla ayni ton)
+   + menuye isaret eden yuzen etiketler + karin guruldama efekti
+--------------------------------------------------------- */
+.mascot-stage {
+  position: relative;
+  width: min(460px, 100%);
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+  outline: none;
+  /* Panelle ayni yuvarlaklik + kirpma: animasyon sirasinda gorselin
+     kesik sol kenari zeminin disina tasmaz. */
+  border-radius: 28%;
+  overflow: hidden;
+}
+
+/* Zemin, gorseldeki konusma balonu ve kitabin beyaziyla eslesir;
+   boylece o alanlar "beyaz leke" gibi durmaz. */
+.mascot-panel {
+  position: absolute;
+  inset: 0;
+  border-radius: 28%;
+  /* Sitenin krem paletinden, bolum zemininden bir tik daha sicak */
+  background: linear-gradient(155deg, #FDF6EA 0%, #F7E9D4 55%, #F0DCC0 100%);
+  border: 1px solid rgba(169, 106, 60, 0.14);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.75),
+    0 26px 55px -30px rgba(58, 42, 32, 0.5);
+  transition: box-shadow 0.45s ease, transform 0.45s ease;
+}
+
+.mascot-stage:hover .mascot-panel,
+.mascot-stage:focus-visible .mascot-panel,
+.mascot-stage.rumbling .mascot-panel {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 32px 65px -30px rgba(58, 42, 32, 0.55);
+}
+
+.mascot-img {
+  position: relative;
+  grid-area: 1 / 1;
+  z-index: 3;
+  width: 86%;
+  height: auto;
+}
+
+/* Gorselin birebir kopyasi, sadece karin bolgesi gorunecek sekilde
+   dairesel kirpilir. Hover'da yerinde sisip inerek "guruldama" hissi
+   verir — govdenin geri kalani sabit kalir, kimse "ne oluyor" demez. */
+.mascot-belly {
+  grid-area: 1 / 1;
+  z-index: 4;
+  width: 86%;
+  aspect-ratio: 1072 / 1080;
+  background: url('assets/neyesem-maskot.png') center / 100% 100% no-repeat;
+  /* Karin merkezi: gorselin %10.5 / %91 noktasi. Sert kenar yerine
+     yumusak gecisli maske — sisen karin govdeye dogal sekilde karisir. */
+  -webkit-mask-image: radial-gradient(ellipse 19% 19% at 10.5% 91%, #000 45%, rgba(0,0,0,0) 100%);
+  mask-image: radial-gradient(ellipse 19% 19% at 10.5% 91%, #000 45%, rgba(0,0,0,0) 100%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  transform-origin: 10.5% 91%;
+  opacity: 0;
+  pointer-events: none;
+  position: relative;
+}
+
+/* Guruldarken karin hafifce isinir — sicak bir ton basar.
+   Maske ust ogeden mirasla geldigi icin tint sadece karinda kalir. */
+.mascot-belly::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 19% 19% at 10.5% 91%,
+              rgba(226, 88, 60, 0.6) 0%, rgba(226, 88, 60, 0) 70%);
+  mix-blend-mode: soft-light;
+  opacity: 0;
+}
+
+.mascot-stage:hover .mascot-belly::after,
+.mascot-stage:focus-visible .mascot-belly::after,
+.mascot-stage.rumbling .mascot-belly::after {
+  animation: belly-tint 0.5s ease-in-out infinite;
+}
+
+@keyframes belly-tint {
+  0%, 100% { opacity: 0.2; }
+  50%      { opacity: 1; }
+}
+
+.mascot-stage:hover .mascot-belly,
+.mascot-stage:focus-visible .mascot-belly,
+.mascot-stage.rumbling .mascot-belly {
+  opacity: 1;
+  animation: belly-throb 0.5s ease-in-out infinite;
+}
+
+/* Onceki hareketin ayni karakteri, sadece siddeti dusuruldu:
+   kasilip gevserken cok az da kayiyor. */
+@keyframes belly-throb {
+  0%, 100% { transform: scale(1)     translate(0, 0); }
+  30%      { transform: scale(1.075) translate(-1.2px, 0.9px); }
+  65%      { transform: scale(1.11)  translate(1.2px, -0.9px); }
+}
+
+/* Guruldama dalgalari — karakterin elini koydugu karin hizasinda.
+   Konum, gorseldeki karin merkezi (~x110, y985 / 1072x1080) baz
+   alinarak sahne koordinatina cevrildi. */
+.mascot-rumble {
+  position: absolute;
+  z-index: 5;
+  left: 16%;
+  top: 86%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* Karnin uzerinde nabiz gibi atan sicak parilti */
+.mascot-rumble::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 110px;
+  height: 110px;
+  margin: -55px 0 0 -55px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 98, 44, 0.34) 0%, rgba(232, 98, 44, 0) 70%);
+  opacity: 0;
+}
+
+.mascot-stage:hover .mascot-rumble::before,
+.mascot-stage:focus-visible .mascot-rumble::before,
+.mascot-stage.rumbling .mascot-rumble::before {
+  animation: belly-glow 0.5s ease-in-out infinite;
+}
+
+@keyframes belly-glow {
+  0%, 100% { opacity: 0.24; transform: scale(0.9); }
+  50%      { opacity: 0.62; transform: scale(1.14); }
+}
+
+.rumble-wave {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 30px;
+  height: 30px;
+  margin: -15px 0 0 -15px;
+  border-radius: 50%;
+  border: 2px solid rgba(232, 98, 44, 0.65);
+  opacity: 0;
+  transform: scale(0.4);
+}
+
+.mascot-stage:hover .rumble-wave,
+.mascot-stage:focus-visible .rumble-wave,
+.mascot-stage.rumbling .rumble-wave {
+  animation: rumble-out 1.6s ease-out infinite;
+}
+
+.rumble-wave:nth-child(2) { animation-delay: 0.53s; }
+.rumble-wave:nth-child(3) { animation-delay: 1.06s; }
+
+@keyframes rumble-out {
+  0%   { opacity: 0;    transform: scale(0.4); }
+  22%  { opacity: 0.82; }
+  100% { opacity: 0;    transform: scale(3.1); }
+}
+
+
+/* Hareket hassasiyeti olanlar icin animasyonlari kapat */
+@media (prefers-reduced-motion: reduce) {
+  .mascot-stage:hover .mascot-belly,
+  .mascot-stage:hover .mascot-belly::after,
+  .mascot-stage:hover .rumble-wave,
+  .mascot-stage:hover .mascot-rumble::before,
+  .mascot-stage.rumbling .mascot-belly,
+  .mascot-stage.rumbling .mascot-belly::after,
+  .mascot-stage.rumbling .rumble-wave,
+  .mascot-stage.rumbling .mascot-rumble::before {
+    animation: none;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ---------------------------------------------------------
+   Menu deck — sayfa sayfa gezilen menu
+--------------------------------------------------------- */
+.menu-deck {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.menu-pager {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  outline: none;
+  /* dokunmatikte yatay kaydirma serbest, dikey sayfa kaydirmasi bozulmasin */
+  touch-action: pan-x pan-y;
+  padding-block: 0.5rem;
+}
+
+.menu-pager.dragging {
+  scroll-behavior: auto;
+  cursor: grabbing;
+  scroll-snap-type: none;
+}
+
+.menu-page {
+  flex: 0 0 100%;
+  width: 100%;
+  scroll-snap-align: start;
+  padding-inline: 0.25rem;
+}
+
+/* Her sayfanin ustunde hangi kategoride oldugunu soyleyen baslik */
+.page-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0 0.35rem 0.9rem;
+  margin-bottom: 0.35rem;
+  border-bottom: 1px solid rgba(58, 42, 32, 0.1);
+}
+
+.page-cat {
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: #A9603C;
+  line-height: 1.2;
+}
+
+.page-sub {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(58, 42, 32, 0.4);
+  white-space: nowrap;
+}
+
+.menu-page-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px)  { .menu-page-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .menu-page-grid { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; } }
+@media (min-width: 1280px) { .menu-page-grid { grid-template-columns: repeat(4, 1fr); } }
+
+/* Ok tuslari */
+.deck-arrow {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.9rem;
+  height: 2.9rem;
+  border-radius: 9999px;
+  background: #fff;
+  color: #4A382C;
+  border: 1px solid rgba(58, 42, 32, 0.1);
+  box-shadow: 0 10px 24px -12px rgba(58, 42, 32, 0.45);
+  transition: all 0.25s ease;
+}
+
+.deck-arrow:hover:not(:disabled) {
+  background: linear-gradient(135deg, #E8622C, #D64545);
+  color: #fff;
+  border-color: transparent;
+  transform: scale(1.06);
+}
+
+.deck-arrow:disabled {
+  opacity: 0.32;
+  cursor: default;
+  box-shadow: none;
+}
+
+/* Sayfa noktalari */
+.menu-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.75rem;
+}
+
+.menu-dots.is-single { display: none; }
+
+.menu-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 9999px;
+  background: rgba(58, 42, 32, 0.2);
+  transition: all 0.3s ease;
+}
+
+.menu-dot:hover { background: rgba(232, 98, 44, 0.55); }
+
+.menu-dot.active {
+  width: 26px;
+  background: linear-gradient(135deg, #E8622C, #D64545);
+}
+
+/* Sayfa sayisi cok oldugunda noktalar yerine sayac */
+.menu-counter {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #A9603C;
+  letter-spacing: 0.04em;
+  padding: 0.35rem 0.9rem;
+  border-radius: 9999px;
+  background: rgba(169, 96, 60, 0.1);
+}
+
+.menu-hint {
+  margin-top: 0.85rem;
+  text-align: center;
+  font-size: 0.78rem;
+  color: rgba(58, 42, 32, 0.45);
+}
+
+/* ---------------------------------------------------------
+   Food cards — clean by default, info slides up on hover
+--------------------------------------------------------- */
+.food-card {
+  position: relative;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 10px 30px -12px rgba(58, 42, 32, 0.15);
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.4s ease;
+  opacity: 0;
+  transform: translateY(24px);
+  animation: card-in 0.6s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+@keyframes card-in {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.food-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 45px -18px rgba(58, 42, 32, 0.32);
+}
+
+.food-card-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f3e7d3, #ebd9bd);
+}
+
+.food-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.food-card:hover .food-card-media img {
+  transform: scale(1.08);
+}
+
+.food-card-name {
+  padding: 1.1rem 1.25rem;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: #3A2A20;
+  transition: opacity 0.3s ease;
+}
+
+.food-card-panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1.4rem 1.4rem 1.6rem;
+  background: linear-gradient(180deg, rgba(58, 42, 32, 0.92), rgba(30, 21, 15, 0.97));
+  color: #FBF4E9;
+  transform: translateY(100%);
+  transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
+  border-radius: 1.5rem 1.5rem 0 0;
+}
+
+.food-card:hover .food-card-panel,
+.food-card:focus-within .food-card-panel,
+.food-card.touch-active .food-card-panel {
+  transform: translateY(0%);
+}
+
+.food-card-panel .fc-ingredients {
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: rgba(251, 244, 233, 0.72);
+  margin-bottom: 0.75rem;
+}
+
+.food-card-panel .fc-bottom {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.food-card-panel .fc-price {
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: #F0A93B;
+  white-space: nowrap;
+}
+
+/* Indirim oncesi fiyat */
+.food-card-panel .fc-old {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: rgba(251, 244, 233, 0.5);
+  text-decoration: line-through;
+  white-space: nowrap;
+}
+
+.food-card-badge {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  z-index: 5;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #fff;
+  background: rgba(58, 42, 32, 0.85);
+  padding: 0.3rem 0.7rem;
+  border-radius: 9999px;
+  backdrop-filter: blur(4px);
+}
+
+/* Fade-out state used when filtering */
+.food-card.hide {
+  display: none;
+}
+
+/* ---------------------------------------------------------
+   Footer social icons
+--------------------------------------------------------- */
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 9999px;
+  background: rgba(251, 244, 233, 0.08);
+  color: #FBF4E9;
+  transition: all 0.25s ease;
+}
+
+.social-icon:hover {
+  background: linear-gradient(135deg, #E8622C, #D64545);
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+/* =========================================================
+   MOBIL DUZENLEMELER
+   ========================================================= */
+@media (max-width: 640px) {
+  :root { --nav-h: 68px; }
+
+  /* Ust bar dar ekranda tasmasin: logo ve linkler kuculur */
+  .nav-logo-img { height: 28px; }
+
+  .nav-full  { display: none; }
+  .nav-short { display: inline; }
+
+  .nav-links {
+    gap: 0.85rem;
+    font-size: 0.75rem;
+  }
+
+  #top-nav .site-container {
+    padding-block: 0.7rem;
+    padding-inline: 0.75rem;
+    gap: 0.6rem;
+  }
+
+  /* Hero tipografisi telefonda rahat okunsun */
+  .hero-text-panel {
+    padding: 1.75rem 1.25rem;
+    border-radius: 1.25rem;
+  }
+
+  .hero-eyebrow { font-size: 0.95rem; }
+  .hero-title   { font-size: clamp(1.6rem, 7.5vw, 2.3rem); }
+  .hero-cta a   { font-size: 0.95rem; padding: 0.85rem 1.5rem; }
+
+  .hero-content { padding-left: 1rem; padding-right: 1rem; }
+
+  /* Maskot sahnesi ekrana sigsin */
+  .mascot-stage { width: min(320px, 88vw); }
+
+  /* Kart bilgi paneli telefonda daha kompakt */
+  .food-card-panel { padding: 1rem 1.1rem 1.2rem; }
+  .food-card-panel .fc-ingredients { font-size: 0.78rem; }
+
+  /* Sayfalayici: telefonda oklar gizlenir, parmakla kaydirilir */
+  .deck-arrow { display: none; }
+  .menu-deck { gap: 0; }
+  .menu-page { padding-inline: 0.15rem; }
+  .menu-page-grid { gap: 1rem; }
+}
+
+/* Dokunmatik cihazlarda hover yok: kart paneli ve guruldama
+   JS ile tetiklenir, hover'a bagli gorsel efektler sadelesir. */
+@media (hover: none) {
+  .food-card:hover { transform: none; box-shadow: 0 10px 30px -12px rgba(58, 42, 32, 0.15); }
+  .food-card:hover .food-card-media img { transform: none; }
+  .food-card.touch-active { transform: translateY(-4px); }
+  .food-card.touch-active .food-card-media img { transform: scale(1.06); }
+}
