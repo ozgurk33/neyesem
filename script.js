@@ -428,22 +428,27 @@ document.addEventListener('DOMContentLoaded', () => {
   const mascotStage = document.querySelector('.mascot-stage');
 
   if (mascotStage && isTouchDevice) {
-    if ('IntersectionObserver' in window) {
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          mascotStage.classList.toggle('rumbling', entry.isIntersecting);
-        });
-      }, { threshold: 0.45 });
-      io.observe(mascotStage);
-    } else {
-      mascotStage.classList.add('rumbling');
-    }
-
+    /* Otomatik başlamaz: masaüstündeki hover gibi, dokununca çalışır. */
     mascotStage.addEventListener('click', () => {
-      mascotStage.classList.remove('rumbling');
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => mascotStage.classList.add('rumbling'));
-      });
+      if (mascotStage.classList.contains('rumbling')) {
+        mascotStage.classList.remove('rumbling');
+        return;
+      }
+      mascotStage.classList.add('rumbling');
+    });
+  }
+
+  /* -----------------------------------------------------
+     7b) HERO — telefonda dokununca yazılar belirir
+     (masaüstünde mouse ile üstüne gelince olduğu gibi)
+  ----------------------------------------------------- */
+  const hero = document.querySelector('.hero');
+
+  if (hero && isTouchDevice) {
+    hero.addEventListener('click', (e) => {
+      /* "Menüyü Keşfet" butonuna basıldıysa karışma */
+      if (e.target.closest('a')) return;
+      hero.classList.toggle('revealed');
     });
   }
 

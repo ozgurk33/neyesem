@@ -69,15 +69,18 @@ body {
 
 /* Siparis linki: genis ekranda vurgulu buton gibi */
 .nav-call {
-  padding: 0.5rem 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1.2rem;
   border-radius: 9999px;
-  background: #E8622C;
+  background: #25D366;
   color: #fff !important;
   text-shadow: none !important;
-  box-shadow: 0 10px 24px -12px rgba(232, 98, 44, 0.9);
+  box-shadow: 0 10px 24px -12px rgba(37, 211, 102, 0.9);
 }
 
-.nav-call:hover { background: #D64545; color: #fff !important; }
+.nav-call:hover { background: #1EBE5A; color: #fff !important; }
 
 /* ---------------------------------------------------------
    Telefon menusu (hamburger)
@@ -142,13 +145,40 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.55rem;
-  margin-top: 0.85rem;
+  margin-top: 0.6rem;
   border-radius: 9999px;
-  background: linear-gradient(135deg, #E8622C, #D64545);
+  border-bottom: none !important;
   color: #fff !important;
   font-size: 0.95rem !important;
+}
+
+.mm-wa {
+  margin-top: 0.9rem;
+  background: #25D366;
+  box-shadow: 0 12px 26px -12px rgba(37, 211, 102, 0.85);
+}
+
+.mm-tel {
+  background: linear-gradient(135deg, #E8622C, #D64545);
   box-shadow: 0 12px 26px -12px rgba(216, 69, 45, 0.8);
 }
+
+/* Footer WhatsApp baglantisi */
+.footer-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 9999px;
+  background: #25D366;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.8rem;
+  transition: background 0.25s ease;
+}
+
+.footer-wa:hover { background: #1EBE5A; }
 
 #top-nav.scrolled .nav-links a {
   color: #4A382C;
@@ -309,16 +339,26 @@ body {
   transition: opacity 0.5s ease;
 }
 
-/* Hover / focus (keyboard) state: darken + reveal content */
+/* Hover / focus (klavye) / dokunma: karart + icerigi goster.
+   .revealed telefonda parmakla dokununca JS tarafindan eklenir. */
 .hero:hover .hero-bg,
-.hero:focus-within .hero-bg {
+.hero:focus-within .hero-bg,
+.hero.revealed .hero-bg {
   transform: scale(1.02);
   filter: saturate(1.12) contrast(1.1) brightness(0.8);
 }
 
 .hero:hover .hero-overlay,
-.hero:focus-within .hero-overlay {
+.hero:focus-within .hero-overlay,
+.hero.revealed .hero-overlay {
   opacity: 1;
+}
+
+.hero:hover .hero-text-panel,
+.hero:focus-within .hero-text-panel,
+.hero.revealed .hero-text-panel {
+  background: rgba(20, 14, 10, 0.42);
+  backdrop-filter: blur(8px);
 }
 
 .hero:hover .hero-eyebrow,
@@ -326,23 +366,50 @@ body {
 .hero:hover .hero-cta,
 .hero:focus-within .hero-eyebrow,
 .hero:focus-within .hero-title,
-.hero:focus-within .hero-cta {
+.hero:focus-within .hero-cta,
+.hero.revealed .hero-eyebrow,
+.hero.revealed .hero-title,
+.hero.revealed .hero-cta {
   opacity: 1;
   transform: translateY(0);
 }
 
-.hero:hover .hero-scroll-hint {
+.hero:hover .hero-scroll-hint,
+.hero.revealed .hero-scroll-hint {
   opacity: 0;
 }
 
-/* Touch devices can't hover — keep the message legible by default */
+/* Dokunmatikte hover yok: yazilar parmakla dokununca cikar.
+   Kucuk bir ipucu isareti ne yapilacagini soyler. */
+.hero-tap-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 22%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: none;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 9999px;
+  background: rgba(20, 14, 10, 0.45);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #F0E1C8;
+  font-size: 0.85rem;
+  font-weight: 500;
+  pointer-events: none;
+  animation: tap-hint 2.4s ease-in-out infinite;
+}
+
 @media (hover: none) {
-  .hero-overlay { opacity: 0.85; }
-  .hero-eyebrow, .hero-title, .hero-cta {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .hero-bg { transform: scale(1.0); filter: saturate(1.1) brightness(0.82); }
+  .hero-tap-hint { display: inline-flex; }
+  .hero.revealed .hero-tap-hint { display: none; }
+}
+
+@keyframes tap-hint {
+  0%, 100% { opacity: 0.65; transform: translateX(-50%) translateY(0); }
+  50%      { opacity: 1;    transform: translateX(-50%) translateY(-5px); }
 }
 
 /* ---------------------------------------------------------
@@ -674,6 +741,51 @@ body {
   border-radius: 9999px;
   background: rgba(169, 96, 60, 0.1);
 }
+
+/* ---------------------------------------------------------
+   Odeme yontemleri seridi
+--------------------------------------------------------- */
+.pay-strip {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(58, 42, 32, 0.1);
+  text-align: center;
+}
+
+.pay-title {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(58, 42, 32, 0.45);
+}
+
+.pay-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.7rem;
+}
+
+.pay-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.6rem 1.25rem;
+  border-radius: 0.7rem;
+  background: #fff;
+  border: 1px solid rgba(58, 42, 32, 0.08);
+  box-shadow: 0 8px 20px -12px rgba(58, 42, 32, 0.4);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+}
+
+.pay-edenred  { color: #E2001A; }
+.pay-pluxee   { color: #221C46; }
+.pay-multinet { color: #E4002B; }
+.pay-visa     { color: #1A1F71; font-style: italic; letter-spacing: 0.06em; }
 
 .menu-note {
   display: inline-block;
