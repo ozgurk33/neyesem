@@ -36,9 +36,11 @@ body {
    gorunur ama blur + koyu tul sayesinde yazilar net okunur.
 --------------------------------------------------------- */
 #top-nav {
-  min-height: var(--nav-h);
+  /* Dikey yigin: ust satir + (telefonda) acilan menu.
+     Satir duzeni .site-container icinde. */
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   background: rgba(26, 18, 13, 0.16);
   backdrop-filter: blur(10px) saturate(1.2);
   -webkit-backdrop-filter: blur(10px) saturate(1.2);
@@ -65,8 +67,88 @@ body {
   color: #F0A93B;
 }
 
-/* Dar ekranda kisa etiket kullanilir */
-.nav-short { display: none; }
+/* Siparis linki: genis ekranda vurgulu buton gibi */
+.nav-call {
+  padding: 0.5rem 1.1rem;
+  border-radius: 9999px;
+  background: #E8622C;
+  color: #fff !important;
+  text-shadow: none !important;
+  box-shadow: 0 10px 24px -12px rgba(232, 98, 44, 0.9);
+}
+
+.nav-call:hover { background: #D64545; color: #fff !important; }
+
+/* ---------------------------------------------------------
+   Telefon menusu (hamburger)
+--------------------------------------------------------- */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  padding: 0 9px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.nav-toggle-bar {
+  display: block;
+  height: 2px;
+  width: 100%;
+  border-radius: 2px;
+  background: #fff;
+  transition: transform 0.3s ease, opacity 0.2s ease;
+}
+
+#top-nav.scrolled .nav-toggle {
+  background: rgba(58, 42, 32, 0.07);
+  border-color: rgba(58, 42, 32, 0.14);
+}
+
+#top-nav.scrolled .nav-toggle-bar { background: #4A382C; }
+
+/* Acikken carpiya donusur */
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem 1.25rem;
+  background: rgba(251, 244, 233, 0.98);
+  backdrop-filter: blur(14px);
+  border-top: 1px solid rgba(58, 42, 32, 0.1);
+  box-shadow: 0 18px 40px -20px rgba(58, 42, 32, 0.5);
+}
+
+.mobile-menu a {
+  padding: 0.95rem 0.5rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #4A382C;
+  border-bottom: 1px solid rgba(58, 42, 32, 0.08);
+}
+
+.mobile-menu a:last-child { border-bottom: none; }
+
+.mobile-menu-call {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  margin-top: 0.85rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #E8622C, #D64545);
+  color: #fff !important;
+  font-size: 0.95rem !important;
+  box-shadow: 0 12px 26px -12px rgba(216, 69, 45, 0.8);
+}
 
 #top-nav.scrolled .nav-links a {
   color: #4A382C;
@@ -593,6 +675,17 @@ body {
   background: rgba(169, 96, 60, 0.1);
 }
 
+.menu-note {
+  display: inline-block;
+  margin-top: 0.85rem;
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  background: rgba(169, 96, 60, 0.1);
+  color: #A9603C;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
 .menu-hint {
   margin-top: 0.85rem;
   text-align: center;
@@ -636,6 +729,20 @@ body {
   height: 100%;
   object-fit: cover;
   transition: transform 0.6s ease;
+}
+
+/* Fotografi olmayan urunler icin sade, markali zemin */
+.food-card-media.is-placeholder {
+  display: grid;
+  place-items: center;
+  background: linear-gradient(150deg, #FDF6EA 0%, #F5E7D2 100%);
+}
+
+.media-placeholder svg {
+  width: 34%;
+  max-width: 62px;
+  height: auto;
+  color: rgba(169, 96, 60, 0.42);
 }
 
 .food-card:hover .food-card-media img {
@@ -743,24 +850,26 @@ body {
 /* =========================================================
    MOBIL DUZENLEMELER
    ========================================================= */
+
+/* Yatay menu sigmayinca hamburger'a gecer.
+   Siparis butonu genis yer kapladigi icin esik 900px. */
+@media (max-width: 900px) {
+  /* #top-nav ile ozgulluk artirildi: Tailwind'in .flex yardimci
+     sinifi sonradan yuklendigi icin sade .nav-links kuralini eziyordu */
+  #top-nav .nav-links { display: none; }
+  .nav-toggle  { display: flex; }
+  .mobile-menu { display: flex; }
+}
+
 @media (max-width: 640px) {
   :root { --nav-h: 68px; }
 
   /* Ust bar dar ekranda tasmasin: logo ve linkler kuculur */
-  .nav-logo-img { height: 28px; }
-
-  .nav-full  { display: none; }
-  .nav-short { display: inline; }
-
-  .nav-links {
-    gap: 0.85rem;
-    font-size: 0.75rem;
-  }
+  .nav-logo-img { height: 34px; }
 
   #top-nav .site-container {
     padding-block: 0.7rem;
-    padding-inline: 0.75rem;
-    gap: 0.6rem;
+    padding-inline: 1rem;
   }
 
   /* Hero tipografisi telefonda rahat okunsun */

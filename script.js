@@ -17,134 +17,147 @@ document.addEventListener('DOMContentLoaded', () => {
   const ICE = 'assets/Menu_photos/icecekler/';
 
   const img = {
-    donerEkmek:    FAV + '20053885_1783765519952.jpg',
-    soslıDurum:    FAV + '20053890_1783092054856.jpg',
-    kofteEkmek:    FAV + '20053904_1783765250723.jpg',
-    ciğerServis:   FAV + '20053911_1783092164668.jpg',
-    kasarliDurum:  FAV + '20053893_1783092252246.jpg',
-    donerServis:   FAV + '20053910_1783092176751.jpg',
+    /* Ekmek arasi */
+    ekmekDoner: FAV + '20053885_1783765519952.jpg',
+    ekmekKofte: FAV + '20053904_1783765250723.jpg',
 
-    tavukDonerDurum: DUR + '20053888_1783091981352.jpg',
-    kasarliDurum2:   DUR + '20053892_1783091952246.jpg',
-    ciğerDurum:      DUR + '20053894_1783092243225.jpg',
-    adanaDurum:      DUR + '20053896_1783092262460.jpg',
-    urfaDurum:       DUR + '20053898_1783092281452.jpg',
-    tavukSisDurum:   DUR + '20053900_1783092291482.jpg',
-    kofteDurum:      DUR + '20053902_1783092309397.jpg',
-    neyesemDurum:    DUR + '20053906_1783092329329.jpg',
+    /* Durumler */
+    durumDoner:    DUR + '20053888_1783091981352.jpg',
+    durumSoslu:    DUR + '20053890_1783092054856.jpg',
+    durumKasarli:  DUR + '20053892_1783091952246.jpg',
+    durumCiger:    DUR + '20053894_1783092243225.jpg',
+    durumAdana:    DUR + '20053896_1783092262460.jpg',
+    durumUrfa:     DUR + '20053898_1783092281452.jpg',
+    durumTavukSis: DUR + '20053900_1783092291482.jpg',
+    durumKofte:    DUR + '20053902_1783092309397.jpg',
+    durumNeYesem:  DUR + '20053906_1783092329329.jpg',
 
-    adanaServis:     SRV + '20053912_1783092157181.jpg',
-    urfaServis:      SRV + '20053913_1783092156828.jpg',
-    tavukSisServis:  SRV + '20053914_1783092149971.jpg',
-    kanatServis:     SRV + '20053915_1783092120757.jpg',
-    kofteServis:     SRV + '20053916_1783092136257.jpg',
-    kulbastiServis:  SRV + '20053917_1783764340737.jpg',
+    /* Servisler */
+    servisDoner:    SRV + '20053910_1783092176751.jpg',
+    servisCiger:    SRV + '20053911_1783092164668.jpg',
+    servisAdana:    SRV + '20053912_1783092157181.jpg',
+    servisUrfa:     SRV + '20053913_1783092156828.jpg',
+    servisTavukSis: SRV + '20053914_1783092149971.jpg',
+    servisKanat:    SRV + '20053915_1783092120757.jpg',
+    servisKofte:    SRV + '20053916_1783092136257.jpg',
+    servisKulbasti: SRV + '20053917_1783764340737.jpg',
+    karisikIzgara:  KAR + '20053922_1783757686810.jpg',
 
-    karisik:  KAR + '20053922_1783757686810.jpg',
-    ezogelin: COR + '20053923_1783083814778.jpg',
-    mercimek: COR + '20053924_1783083821407.jpg',
+    corba: COR + '20053923_1783083814778.jpg',
 
-    cola330:   ICE + '20053925_1783083832189.jpg',
-    fanta:     ICE + '20053926_1783083838858.jpg',
-    sprite:    ICE + '20053927_1783083846868.jpg',
-    cappy:     ICE + '20053928_1783085857435.jpg',
-    ayran275:  ICE + '20053929_1783083864779.jpg',
-    salgam:    ICE + '20053930_1783085324372.jpg',
-    su:        ICE + '20053931_1783083874436.jpg',
-    soda:      ICE + '20053932_1783083881239.jpg',
-    ayran1lt:  ICE + '20053935_1783083900792.jpg',
-    cola1lt:   ICE + '20053936_1783083912067.jpg',
-    cola25lt:  ICE + '20053937_1783083920836.jpg',
+    /* Icecekler */
+    cola:       ICE + '20053925_1783083832189.jpg',
+    fanta:      ICE + '20053926_1783083838858.jpg',
+    sprite:     ICE + '20053927_1783083846868.jpg',
+    karisikIce: ICE + '20053928_1783085857435.jpg',
+    ayran:      ICE + '20053929_1783083864779.jpg',
+    salgam:     ICE + '20053930_1783085324372.jpg',
+    soda:       ICE + '20053932_1783083881239.jpg',
+    ayran1lt:   ICE + '20053935_1783083900792.jpg',
+    cola1lt:    ICE + '20053936_1783083912067.jpg',
+    cola25lt:   ICE + '20053937_1783083920836.jpg',
   };
 
-  /* Sık tekrar eden açıklamalar */
+  /* Sık tekrar eden içerik açıklamaları */
   const D = {
-    donerEkmek: '100 gr tavuk döner, kıvırcık, domates, turşu, soğan ile servis edilir.',
-    donerDurumA: '100 gr tavuk döner, domates, turşu, patates kızartması + ayran ile servis edilir.',
-    donerDurumP: '100 gr tavuk döner, domates, turşu, patates kızartması + 330 ml Coca Cola ile servis edilir.',
-    soslu: 'Domates, turşu, patates kızartması, özel sos ile servis edilir.',
-    sosluKasar: 'Domates, turşu, patates kızartması, özel sos, kaşar ile servis edilir.',
-    ciger: 'Domates, turşu, patates kızartması, soğan ile servis edilir.',
-    kozBiber: 'Közlenmiş biber, sumaklı soğan, maydanoz ile servis edilir.',
-    tavukSis: 'Közlenmiş biber, domates, soğan ile servis edilir.',
-    kofteEkmek: 'Kıvırcık, domates, turşu, soğan, patates kızartması ile servis edilir.',
-    neyesem: 'Tavada özel marine edilmiş fileto tavuk, kapya biber ile servis edilir.',
-    servis: 'Közde domates, biber, pilav, soğan söğüş, salata, turşu ile servis edilir.',
-    servisEzme: 'Közde domates, biber, pilav, soğan söğüş, salata, turşu, ezme ile servis edilir.',
-    servisTam: 'Közde domates, biber, pilav, soğan söğüş, salata, turşu, ezme, yoğurtlu meze ile servis edilir.',
-    corba: 'Tırnaklı pide, turşu ile servis edilir.',
+    klasik:      'Kıvırcık, domates, turşu, patates, soğan',
+    sosluDurum:  'Kıvırcık, domates, turşu, patates, sos',
+    kasarliDurum:'Kıvırcık, domates, turşu, patates, sos, kaşar',
+    ciger:       'Soğan, domates, patates',
+    kulbasti:    'Soğan, domates, biber',
+    kebapDurum:  'Domates, soğan, biber',
+    tavukSis:    'Domates, biber, soğan',
+    servisSade:  'Pilav, salata, turşu, patates',
+    servisKoz:   'Pilav, salata, patates, közde domates ve biber, turşu',
+    gozleme:     'Patates, domates, salatalık',
+    kiloluk:     'Pilav, salata, turşu ve seçeceğiniz bir litrelik içecek ile servis edilir.',
   };
 
   /* -----------------------------------------------------
-     2) MENÜ VERİSİ
-     price: güncel fiyat, oldPrice: varsa üzeri çizili fiyat
+     2) MENÜ VERİSİ  (restoranın güncel basılı menüsü)
+     c: kategori, n: ad, d: içindekiler, p: fiyat, img: görsel
+     Görseli olmayan ürünler markalı bir yer tutucu ile gösterilir.
   ----------------------------------------------------- */
   const menuItems = [
-    /* --- Bu Restoranın En Sevilenleri (7) --- */
-    { c: 'favoriler', n: 'Tavuk Döner Ekmek Arası (Ayranlı)',            d: D.donerEkmek,  p: 247.5, img: img.donerEkmek },
-    { c: 'favoriler', n: 'Tavuk Döner Ekmek Arası (Patates + Cola)',     d: D.donerEkmek,  p: 324,   img: img.donerEkmek },
-    { c: 'favoriler', n: 'Soslu Tavuk Döner Dürüm (Ayranlı)',            d: D.soslu,       p: 270,   img: img.soslıDurum },
-    { c: 'favoriler', n: 'Köfte Ekmek Arası (Ayranlı)',                  d: D.kofteEkmek,  p: 360, o: 396, img: img.kofteEkmek },
-    { c: 'favoriler', n: 'Arnavut Ciğeri (Dana) Servis',                 d: D.servis,      p: 378, o: 420, img: img.ciğerServis },
-    { c: 'favoriler', n: 'Soslu Tavuk Döner Kaşarlı Dürüm (Patates + Cola)', d: D.sosluKasar, p: 333, img: img.kasarliDurum },
-    { c: 'favoriler', n: 'Tavuk Döner Servis',                           d: D.servis,      p: 315, o: 350, img: img.donerServis },
+    /* --- Dürümler (13) --- */
+    { c: 'durum', n: 'Tavuk Döner Dürüm',              d: D.klasik,       p: 170, img: img.durumDoner },
+    { c: 'durum', n: 'Soslu Tavuk Döner Dürüm',        d: D.sosluDurum,   p: 170, img: img.durumSoslu },
+    { c: 'durum', n: 'Soslu-Kaşarlı Tavuk Döner Dürüm',d: D.kasarliDurum, p: 190, img: img.durumKasarli },
+    { c: 'durum', n: 'Arnavut Ciğeri (Dana) Dürüm',    d: D.ciger,        p: 250, img: img.durumCiger },
+    { c: 'durum', n: 'Adana Dürüm',                    d: D.kebapDurum,   p: 350, img: img.durumAdana },
+    { c: 'durum', n: 'Urfa Dürüm',                     d: D.kebapDurum,   p: 350, img: img.durumUrfa },
+    { c: 'durum', n: 'Tavuk Şiş Dürüm',                d: D.tavukSis,     p: 250, img: img.durumTavukSis },
+    { c: 'durum', n: 'Köfte Dürüm',                    d: D.klasik,       p: 260, img: img.durumKofte },
+    { c: 'durum', n: 'Ne Yesem Dürüm (Tavuk)',         d: 'Patates, ayran', p: 260, img: img.durumNeYesem },
+    { c: 'durum', n: 'Ne Yesem Dürüm (Tavuk)',         d: 'Patates, kola',  p: 300, img: img.durumNeYesem },
+    { c: 'durum', n: 'Ne Yesem Dürüm (Et)',            d: 'Patates, ayran', p: 450 },
+    { c: 'durum', n: 'Ne Yesem Dürüm (Et)',            d: 'Patates, kola',  p: 500 },
 
-    /* --- Dürüm Menüsü (22) --- */
-    { c: 'durum', n: 'Tavuk Döner Ekmek Arası (Ayranlı)',                d: D.donerEkmek,   p: 247.5, img: img.donerEkmek },
-    { c: 'durum', n: 'Tavuk Döner Ekmek Arası (Patates + Cola)',         d: D.donerEkmek,   p: 324,   img: img.donerEkmek },
-    { c: 'durum', n: 'Tavuk Döner Dürüm (Ayranlı)',                      d: D.donerDurumA,  p: 270,   img: img.tavukDonerDurum },
-    { c: 'durum', n: 'Tavuk Döner Dürüm (Patates + Cola)',               d: D.donerDurumP,  p: 324,   img: img.tavukDonerDurum },
-    { c: 'durum', n: 'Soslu Tavuk Döner Dürüm (Ayranlı)',                d: D.soslu,        p: 270,   img: img.soslıDurum },
-    { c: 'durum', n: 'Soslu Tavuk Döner Dürüm (Patates + Cola)',         d: D.soslu,        p: 324, o: 333, img: img.soslıDurum },
-    { c: 'durum', n: 'Soslu Tavuk Döner Kaşarlı Dürüm (Ayranlı)',        d: D.sosluKasar,   p: 288,   img: img.kasarliDurum2 },
-    { c: 'durum', n: 'Soslu Tavuk Döner Kaşarlı Dürüm (Patates + Cola)', d: D.sosluKasar,   p: 333,   img: img.kasarliDurum2 },
-    { c: 'durum', n: 'Arnavut Ciğeri (Dana) Dürüm (Ayranlı)',            d: D.ciger,        p: 306, o: 315, img: img.ciğerDurum },
-    { c: 'durum', n: 'Arnavut Ciğeri (Dana) Dürüm (Patates + Cola)',     d: D.ciger,        p: 360, o: 378, img: img.ciğerDurum },
-    { c: 'durum', n: 'Adana Dürüm (Ayranlı)',                            d: D.kozBiber,     p: 450, o: 468, img: img.adanaDurum },
-    { c: 'durum', n: 'Adana Dürüm (Patates + Cola)',                     d: D.kozBiber,     p: 513, o: 531, img: img.adanaDurum },
-    { c: 'durum', n: 'Urfa Dürüm (Ayranlı)',                             d: D.kozBiber,     p: 513,   img: img.urfaDurum },
-    { c: 'durum', n: 'Urfa Dürüm (Patates + Cola)',                      d: D.kozBiber,     p: 513, o: 531, img: img.urfaDurum },
-    { c: 'durum', n: 'Tavuk Şiş Dürüm (Ayranlı)',                        d: D.tavukSis,     p: 378, o: 420, img: img.tavukSisDurum },
-    { c: 'durum', n: 'Tavuk Şiş Dürüm (Patates + Cola)',                 d: D.kozBiber,     p: 405, o: 441, img: img.tavukSisDurum },
-    { c: 'durum', n: 'Köfte Dürüm (Ayranlı)',                            d: D.kozBiber,     p: 396, o: 440, img: img.kofteDurum },
-    { c: 'durum', n: 'Köfte Dürüm (Patates + Cola)',                     d: D.kozBiber,     p: 441, o: 459, img: img.kofteDurum },
-    { c: 'durum', n: 'Köfte Ekmek Arası (Ayranlı)',                      d: D.kofteEkmek,   p: 360, o: 396, img: img.kofteEkmek },
-    { c: 'durum', n: 'Köfte Ekmek Arası (Patates + Cola)',               d: D.kofteEkmek,   p: 459, o: 510, img: img.kofteEkmek },
-    { c: 'durum', n: 'Neyesem Tavuk Dürüm (Ayranlı)',                    d: D.neyesem,      p: 315, o: 350, img: img.neyesemDurum },
-    { c: 'durum', n: 'Neyesem Tavuk Dürüm (Patates + Cola)',             d: D.neyesem,      p: 378, o: 420, img: img.neyesemDurum },
+    /* --- Ekmek Araları (5) --- */
+    { c: 'ekmek', n: 'Ekmek Arası Tavuk Döner',           d: D.klasik,    p: 160, img: img.ekmekDoner },
+    { c: 'ekmek', n: 'Arnavut Ciğeri (Dana) Ekmek Arası', d: D.ciger,     p: 250 },
+    { c: 'ekmek', n: 'Ekmek Arası Köfte',                 d: D.klasik,    p: 260, img: img.ekmekKofte },
+    { c: 'ekmek', n: 'Ekmek Arası Tavuk Külbastı',        d: D.kulbasti,  p: 250 },
+    { c: 'ekmek', n: 'Ekmek Arası Sucuk',                 d: 'Ne Yesem dana sucuk', p: 250 },
 
-    /* --- Servisler (8) --- */
-    { c: 'servisler', n: 'Tavuk Döner Servis',          d: D.servis,     p: 315, o: 350, img: img.donerServis },
-    { c: 'servisler', n: 'Arnavut Ciğeri (Dana) Servis', d: D.servis,     p: 378, o: 420, img: img.ciğerServis },
-    { c: 'servisler', n: 'Adana Servis',                d: D.servisEzme, p: 504, o: 560, img: img.adanaServis },
-    { c: 'servisler', n: 'Urfa Servis',                 d: D.servisEzme, p: 504, o: 560, img: img.urfaServis },
-    { c: 'servisler', n: 'Tavuk Şiş Servis',            d: D.servisTam,  p: 450, o: 500, img: img.tavukSisServis },
-    { c: 'servisler', n: 'Kanat Servis',                d: D.servisTam,  p: 504, o: 560, img: img.kanatServis },
-    { c: 'servisler', n: 'Köfte Servis',                d: D.servisTam,  p: 486, o: 540, img: img.kofteServis },
-    { c: 'servisler', n: 'Tavuk Külbastı Servis',       d: D.servisTam,  p: 450, o: 500, img: img.kulbastiServis },
+    /* --- Servisler (9) --- */
+    { c: 'servisler', n: 'Tavuk Döner Servis',      d: D.servisSade, p: 230, img: img.servisDoner },
+    { c: 'servisler', n: 'Arnavut Ciğeri (Dana)',   d: D.ciger,      p: 300, img: img.servisCiger },
+    { c: 'servisler', n: 'Adana Servis',            d: D.servisKoz,  p: 380, img: img.servisAdana },
+    { c: 'servisler', n: 'Urfa Servis',             d: D.servisKoz,  p: 380, img: img.servisUrfa },
+    { c: 'servisler', n: 'Tavuk Şiş Servis',        d: D.servisKoz,  p: 300, img: img.servisTavukSis },
+    { c: 'servisler', n: 'Kanat Servis',            d: D.servisKoz,  p: 400, img: img.servisKanat },
+    { c: 'servisler', n: 'Köfte Servis',            d: D.servisSade, p: 330, img: img.servisKofte },
+    { c: 'servisler', n: 'Tavuk Külbastı',          d: D.servisKoz,  p: 300, img: img.servisKulbasti },
+    { c: 'servisler', n: 'Ne Yesem Karışık Izgara (2 Kişilik)',
+      d: 'Adana, tavuk şiş, kanat, köfte, tavuk külbastı, pilav, turşu, közde domates ve biber',
+      p: 1300, img: img.karisikIzgara },
 
-    /* --- Karışık Menü (1) --- */
-    { c: 'karisik', n: 'Ne Yesem Karışık (2 Kişilik)',
-      d: 'Adana, tavuk şiş, kanat, köfte, et külbastı ile servis edilir. Közde biber, domates, pilav, soğan söğüş, salata, turşu, yoğurtlu meze, ezme.',
-      p: 1260, o: 1400, img: img.karisik },
+    /* --- Tostlar (12) --- */
+    { c: 'tost', n: 'Beyaz Peynirli Tost (Ekmek)',    d: '', p: 150 },
+    { c: 'tost', n: 'Beyaz Peynirli Tost (Bazlama)',  d: '', p: 170 },
+    { c: 'tost', n: 'B. Peynirli Domatesli Tost (Ekmek)',   d: '', p: 150 },
+    { c: 'tost', n: 'Peynirli Domatesli Tost (Bazlama)',    d: '', p: 170 },
+    { c: 'tost', n: 'Kaşarlı Tost (Ekmek)',           d: '', p: 160 },
+    { c: 'tost', n: 'Kaşarlı Tost (Bazlama)',         d: '', p: 180 },
+    { c: 'tost', n: 'Kaşarlı Sucuklu Tost (Ekmek)',   d: '', p: 200 },
+    { c: 'tost', n: 'Kaşarlı Sucuklu Tost (Bazlama)', d: '', p: 220 },
+    { c: 'tost', n: 'Kavurmalı Kaşarlı Tost (Ekmek)',   d: '', p: 450 },
+    { c: 'tost', n: 'Kavurmalı Kaşarlı Tost (Bazlama)', d: '', p: 470 },
+    { c: 'tost', n: 'Karışık Tost (Ekmek)',   d: 'Salam, sucuk, kaşar', p: 250 },
+    { c: 'tost', n: 'Karışık Tost (Bazlama)', d: 'Salam, sucuk, kaşar', p: 270 },
 
-    /* --- Çorbalar (2) --- */
-    { c: 'corba', n: 'Ezogelin Çorbası',  d: D.corba, p: 270, o: 300, img: img.ezogelin },
-    { c: 'corba', n: 'Mercimek Çorbası',  d: D.corba, p: 270, o: 300, img: img.mercimek },
+    /* --- Gözlemeler (4) --- */
+    { c: 'gozleme', n: 'Peynirli Gözleme',           d: D.gozleme, p: 150 },
+    { c: 'gozleme', n: 'Kaşarlı Gözleme',            d: D.gozleme, p: 170 },
+    { c: 'gozleme', n: 'Patatesli Gözleme',          d: D.gozleme, p: 170 },
+    { c: 'gozleme', n: 'Patatesli Kaşarlı Gözleme',  d: D.gozleme, p: 200 },
 
-    /* --- İçecekler (11) --- */
-    { c: 'icecek', n: 'Coca Cola (330 ml)',      d: '', p: 72,   o: 80,  img: img.cola330 },
-    { c: 'icecek', n: 'Fanta (330 ml)',          d: '', p: 72,   o: 80,  img: img.fanta },
-    { c: 'icecek', n: 'Sprite',                  d: '', p: 72,   o: 80,  img: img.sprite },
-    { c: 'icecek', n: 'Cappy (330 ml)',          d: '', p: 72,   o: 80,  img: img.cappy },
-    { c: 'icecek', n: 'Büyük Ayran (275 ml)',    d: '', p: 54,   o: 60,  img: img.ayran275 },
-    { c: 'icecek', n: 'Şalgam (300 ml)',         d: '', p: 63,   o: 70,  img: img.salgam },
-    { c: 'icecek', n: 'Su (0.5 lt)',             d: '', p: 22.5, o: 25,  img: img.su },
-    { c: 'icecek', n: 'Soda (200 ml)',           d: '', p: 31.5, o: 35,  img: img.soda },
-    { c: 'icecek', n: 'Ayran (1 lt)',            d: '', p: 81,   o: 90,  img: img.ayran1lt },
-    { c: 'icecek', n: 'Cola (1 lt)',             d: '', p: 90,   o: 100, img: img.cola1lt },
-    { c: 'icecek', n: 'Cola (2.5 lt)',           d: '', p: 126,  o: 140, img: img.cola25lt },
+    /* --- Kiloluk (5) --- */
+    { c: 'kiloluk', n: '1 Kilo Köfte',         d: D.kiloluk, p: 1200, img: img.servisKofte },
+    { c: 'kiloluk', n: '1 Kilo Kanat',         d: D.kiloluk, p: 1200, img: img.servisKanat },
+    { c: 'kiloluk', n: '1 Kilo Külbastı',      d: D.kiloluk, p: 1200, img: img.servisKulbasti },
+    { c: 'kiloluk', n: '1 Kilo Tavuk Pirzola', d: D.kiloluk, p: 1200 },
+    { c: 'kiloluk', n: '1 Kilo Döner',         d: D.kiloluk, p: 800,  img: img.servisDoner },
+
+    /* --- Çorbalar (1) --- */
+    { c: 'corba', n: 'Günün Çorbası', d: '', p: 150, img: img.corba },
+
+    /* --- İçecekler (12) --- */
+    { c: 'icecek', n: 'Kola',            d: '', p: 60,  img: img.cola },
+    { c: 'icecek', n: 'Fanta',           d: '', p: 60,  img: img.fanta },
+    { c: 'icecek', n: 'Sprite',          d: '', p: 60,  img: img.sprite },
+    { c: 'icecek', n: 'Karışık İçecekler', d: '', p: 60, img: img.karisikIce },
+    { c: 'icecek', n: 'Soda',            d: '', p: 30,  img: img.soda },
+    { c: 'icecek', n: 'Büyük Ayran',     d: '', p: 40,  img: img.ayran },
+    { c: 'icecek', n: 'Küçük Ayran',     d: '', p: 30,  img: img.ayran },
+    { c: 'icecek', n: 'Şalgam',          d: '', p: 50,  img: img.salgam },
+    { c: 'icecek', n: '1 Litre Ayran',   d: '', p: 75,  img: img.ayran1lt },
+    { c: 'icecek', n: '1 Litre Kola',    d: '', p: 90,  img: img.cola1lt },
+    { c: 'icecek', n: '1 Litre Şalgam',  d: '', p: 75,  img: img.salgam },
+    { c: 'icecek', n: '2.5 Litre Kola',  d: '', p: 120, img: img.cola25lt },
   ];
+
 
   /* -----------------------------------------------------
      3) YARDIMCILAR
@@ -188,10 +201,19 @@ document.addEventListener('DOMContentLoaded', () => {
       ? `<p class="fc-ingredients">${escapeHtml(item.d)}</p>`
       : '';
 
+    /* Görseli olmayan ürünler için markalı yer tutucu */
+    const gorsel = item.img
+      ? `<img src="${item.img}" alt="${escapeHtml(item.n)}" decoding="async">`
+      : `<span class="media-placeholder" aria-hidden="true">
+           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+             <path d="M6 3v8a2 2 0 002 2v8M6 3v8M10 3v8M18 3c-1.5 0-2.5 1.5-2.5 4v4a2.5 2.5 0 002.5 2.5V21"/>
+           </svg>
+         </span>`;
+
     return `
       <article class="food-card">
-        <div class="food-card-media">
-          <img src="${item.img}" alt="${escapeHtml(item.n)}" decoding="async">
+        <div class="food-card-media${item.img ? '' : ' is-placeholder'}">
+          ${gorsel}
         </div>
         <div class="food-card-name">${escapeHtml(item.n)}</div>
         <div class="food-card-panel">
@@ -203,10 +225,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* Menü bir defter gibi: tüm kategoriler sırayla, sayfa sayfa */
   const CATEGORIES = [
-    { key: 'favoriler', label: 'Bu Restoranın En Sevilenleri' },
-    { key: 'durum',     label: 'Dürüm Menüsü' },
+    { key: 'durum',     label: 'Dürümler' },
+    { key: 'ekmek',     label: 'Ekmek Araları' },
     { key: 'servisler', label: 'Servisler' },
-    { key: 'karisik',   label: 'Karışık Menü' },
+    { key: 'tost',      label: 'Tostlar' },
+    { key: 'gozleme',   label: 'Gözlemeler' },
+    { key: 'kiloluk',   label: 'Kiloluk Siparişler' },
     { key: 'corba',     label: 'Çorbalar' },
     { key: 'icecek',    label: 'İçecekler' },
   ];
@@ -428,8 +452,11 @@ document.addEventListener('DOMContentLoaded', () => {
   ----------------------------------------------------- */
   const topNav = document.getElementById('top-nav');
 
+  /* Sadece ust satirin yuksekligi olculur; telefonda menu acilinca
+     bar buyuyor ama hero/filtre hizasi kaymamali. */
   function syncNavHeight() {
-    const h = Math.round(topNav.getBoundingClientRect().height);
+    const bar = topNav.querySelector('.site-container');
+    const h = Math.round((bar || topNav).getBoundingClientRect().height);
     document.documentElement.style.setProperty('--nav-h', h + 'px');
   }
 
@@ -441,6 +468,39 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('resize', syncNavHeight);
   syncNavHeight();
   handleNavScroll();
+
+  /* Telefon menüsü aç/kapat */
+  const navToggle = document.getElementById('nav-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  function menuKapat() {
+    mobileMenu.hidden = true;
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-label', 'Menüyü aç');
+    syncNavHeight();
+  }
+
+  navToggle.addEventListener('click', () => {
+    const acik = navToggle.getAttribute('aria-expanded') === 'true';
+    if (acik) {
+      menuKapat();
+    } else {
+      mobileMenu.hidden = false;
+      navToggle.setAttribute('aria-expanded', 'true');
+      navToggle.setAttribute('aria-label', 'Menüyü kapat');
+      syncNavHeight();
+    }
+  });
+
+  /* Bir bağlantıya basınca menü kapansın */
+  mobileMenu.addEventListener('click', (e) => {
+    if (e.target.closest('a')) menuKapat();
+  });
+
+  /* Masaüstüne geçilirse açık kalmasın */
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 640 && !mobileMenu.hidden) menuKapat();
+  });
 
   /* -----------------------------------------------------
      9) FOOTER — güncel yıl
