@@ -586,6 +586,32 @@ body {
 }
 
 
+/* Telefonda maskot icin dokunma ipucu */
+.mascot-tap-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 5%;
+  transform: translateX(-50%);
+  z-index: 7;
+  display: none;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.95rem;
+  border-radius: 9999px;
+  background: rgba(58, 42, 32, 0.82);
+  color: #F6E9D8;
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+  animation: tap-hint 2.4s ease-in-out infinite;
+}
+
+@media (hover: none) {
+  .mascot-tap-hint { display: inline-flex; }
+  .mascot-stage.rumbling .mascot-tap-hint { display: none; }
+}
+
 /* Hareket hassasiyeti olanlar icin animasyonlari kapat */
 @media (prefers-reduced-motion: reduce) {
   .mascot-stage:hover .mascot-belly,
@@ -772,6 +798,9 @@ body {
 .pay-badge {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  height: 58px;
+  min-width: 108px;
   padding: 0.6rem 1.25rem;
   border-radius: 0.7rem;
   background: #fff;
@@ -780,7 +809,27 @@ body {
   font-weight: 700;
   font-size: 0.9rem;
   letter-spacing: 0.01em;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
+
+.pay-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px -14px rgba(58, 42, 32, 0.5);
+}
+
+/* Logo dosyasi varsa yazinin yerini alir */
+.pay-logo { display: none; }
+
+.pay-badge.has-logo .pay-logo {
+  display: block;
+  max-height: 30px;
+  max-width: 96px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.pay-badge.has-logo .pay-name { display: none; }
 
 .pay-edenred  { color: #E2001A; }
 .pay-pluxee   { color: #221C46; }

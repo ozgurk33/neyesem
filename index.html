@@ -117,8 +117,8 @@
         Ne Yesem Diye Düşünme,<br> <span class="hero-accent">Lezzete Gel!</span>
       </h1>
       <div class="hero-cta">
-        <a href="#menu" class="inline-flex items-center gap-2 bg-ember hover:bg-paprika text-white font-bold px-8 py-4 rounded-full shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
-          Menüyü Keşfet
+        <a href="#karar" class="inline-flex items-center gap-2 bg-ember hover:bg-paprika text-white font-bold px-8 py-4 rounded-full shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
+          Keşfetmeye Başla
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
         </a>
       </div>
@@ -158,6 +158,12 @@
           <span class="rumble-wave"></span>
           <span class="rumble-wave"></span>
           <span class="rumble-wave"></span>
+        </span>
+
+        <!-- Telefonda ne yapilacagini soyleyen ipucu -->
+        <span class="mascot-tap-hint" aria-hidden="true">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"/></svg>
+          Karnına dokun
         </span>
       </div>
     </div>
@@ -219,11 +225,29 @@
     <!-- Kabul edilen odeme yontemleri (bilgi amacli, site uzerinden odeme alinmaz) -->
     <div class="pay-strip">
       <span class="pay-title">Geçerli Ödeme Yöntemleri</span>
+      <!-- Logo dosyasi assets/odeme/ icine konulunca otomatik olarak
+           yazi rozetinin yerini alir; yoksa yazi gorunmeye devam eder. -->
       <div class="pay-list">
-        <span class="pay-badge pay-edenred">Edenred</span>
-        <span class="pay-badge pay-pluxee">Pluxee</span>
-        <span class="pay-badge pay-multinet">Multinet</span>
-        <span class="pay-badge pay-visa">VISA</span>
+        <span class="pay-badge">
+          <img class="pay-logo" src="assets/odeme/edenred.png" alt="Edenred"
+               onload="this.closest('.pay-badge').classList.add('has-logo')" onerror="this.remove()">
+          <span class="pay-name pay-edenred">Edenred</span>
+        </span>
+        <span class="pay-badge">
+          <img class="pay-logo" src="assets/odeme/pluxee.png" alt="Pluxee"
+               onload="this.closest('.pay-badge').classList.add('has-logo')" onerror="this.remove()">
+          <span class="pay-name pay-pluxee">Pluxee</span>
+        </span>
+        <span class="pay-badge">
+          <img class="pay-logo" src="assets/odeme/multinet.png" alt="Multinet"
+               onload="this.closest('.pay-badge').classList.add('has-logo')" onerror="this.remove()">
+          <span class="pay-name pay-multinet">Multinet</span>
+        </span>
+        <span class="pay-badge">
+          <img class="pay-logo" src="assets/odeme/visa.png" alt="Visa"
+               onload="this.closest('.pay-badge').classList.add('has-logo')" onerror="this.remove()">
+          <span class="pay-name pay-visa">VISA</span>
+        </span>
       </div>
     </div>
   </div>
