@@ -799,8 +799,8 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 58px;
-  min-width: 108px;
+  height: 66px;
+  min-width: 116px;
   padding: 0.6rem 1.25rem;
   border-radius: 0.7rem;
   background: #fff;
@@ -822,12 +822,17 @@ body {
 
 .pay-badge.has-logo .pay-logo {
   display: block;
-  max-height: 30px;
-  max-width: 96px;
   width: auto;
   height: auto;
   object-fit: contain;
 }
+
+/* Her logonun oranı farkli (Multinet dikey, digerleri yatay);
+   optik olarak esit buyuklukte dursunlar diye ayri ayri ayarlandi */
+.logo-visa     { max-height: 27px; max-width: 86px; }
+.logo-pluxee   { max-height: 25px; max-width: 90px; }
+.logo-edenred  { max-height: 36px; max-width: 84px; }
+.logo-multinet { max-height: 20px; max-width: 104px; }
 
 .pay-badge.has-logo .pay-name { display: none; }
 
