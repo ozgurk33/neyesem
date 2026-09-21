@@ -52,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     karisikIce: ICE + '20053928_1783085857435.jpg',
     ayran:      ICE + '20053929_1783083864779.jpg',
     salgam:     ICE + '20053930_1783085324372.jpg',
+    su:         ICE + '20053931_1783083874436.jpg',
     soda:       ICE + '20053932_1783083881239.jpg',
     ayran1lt:   ICE + '20053935_1783083900792.jpg',
     cola1lt:    ICE + '20053936_1783083912067.jpg',
@@ -144,6 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { c: 'corba', n: 'Günün Çorbası', d: '', p: 150, img: img.corba },
 
     /* --- İçecekler (12) --- */
+    { c: 'icecek', n: 'Su',              d: '', p: 25,  img: img.su },
     { c: 'icecek', n: 'Kola',            d: '', p: 70,  img: img.cola },
     { c: 'icecek', n: 'Fanta',           d: '', p: 70,  img: img.fanta },
     { c: 'icecek', n: 'Sprite',          d: '', p: 70,  img: img.sprite },

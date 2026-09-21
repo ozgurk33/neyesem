@@ -863,6 +863,16 @@ body {
 .pay-multinet { color: #E4002B; }
 .pay-visa     { color: #1A1F71; font-style: italic; letter-spacing: 0.06em; }
 
+.menu-notes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+.menu-notes .menu-note { margin-top: 0; }
+
 .menu-note {
   display: inline-block;
   margin-top: 0.85rem;
