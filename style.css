@@ -180,6 +180,28 @@ body {
 
 .footer-wa:hover { background: #1EBE5A; }
 
+/* Footer Google Haritalar baglantisi */
+.footer-map {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.75rem;
+  margin-left: 1.75rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(251, 244, 233, 0.22);
+  color: #FBF4E9;
+  font-weight: 600;
+  font-size: 0.8rem;
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.footer-map:hover {
+  background: #E8622C;
+  border-color: #E8622C;
+  color: #fff;
+}
+
 #top-nav.scrolled .nav-links a {
   color: #4A382C;
   text-shadow: none;
